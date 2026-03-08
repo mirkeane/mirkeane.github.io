@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Call Your Therapist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>    --butter: #e8d48a;
+  .nav-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; font-weight: 700; color: #fdfcf9; text-decoration: none; white-space: nowrap; }
+  /* HERO */
+  .page-hero {
+    padding: 80px 40px 60px;
+  .page-hero::before {
+  .page-hero .eyebrow {
+    color: var(--butter);
+    border: 1px solid var(--butter);
+  .page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+  .page-hero h1 span { color: var(--coral); }
+  .page-hero .intro-text {
+    line-height: 1.8;
+    max-width: 640px;
+    width: 60px;
+  /* SERVICES LIST */
+  .services-page {
+    max-width: 900px;
+    padding: 80px 40px;
+  .service-item {
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.1);
+    animation: fadeUp 0.6s ease both;
+  .service-item:first-child { padding-top: 0; }
+  .service-item:last-child { border-bottom: none; }
+  .service-number {
+    font-size: 4rem;
+    color: rgba(232,212,138,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+  .service-tag {
+    color: var(--butter);
+  .service-item h2 {
+    font-size: 1.8rem;
+  .service-item p {
+  .service-includes {
+    gap: 8px;
+  .service-includes span {
+    padding-left: 16px;
+  .service-includes span::before {
+    content: '✦';
+    left: 0;
+    color: var(--butter);
+    top: 3px;
+  .service-price-box {
+    border-radius: 16px;
+    padding: 28px 24px;
+    min-width: 160px;
+    top: 100px;
+  .service-price-box .price {
+    font-size: 1.8rem;
+    color: var(--butter);
+    margin-bottom: 4px;
+    line-height: 1.1;
+  .service-price-box .per {
+    letter-spacing: 0.1em;
+  .btn-book-service {
+    display: block;
+    padding: 12px 20px;
+    box-shadow: 0 5px 0px #5a1515, 0 7px 14px rgba(158,42,43,0.3);
+  .btn-book-service:hover {
+    box-shadow: 0 3px 0px #5a1515, 0 5px 10px rgba(158,42,43,0.25);
+  .btn-book-service:active {
+    box-shadow: 0 1px 0px #5a1515;
+    top: 4px;
+  .btn-contact-service {
+    display: block;
+    padding: 12px 20px;
+    border: 1.5px solid rgba(245,240,232,0.3);
+  .btn-contact-service:hover { border-color: var(--cream); }
+  /* NOT THERAPY BANNER */
+  .not-therapy-banner {
+    background: var(--butter);
+    padding: 40px;
+  .not-therapy-banner p {
+    margin-bottom: 8px;
+  .not-therapy-banner span {
+    font-weight: 400;
+    color: rgba(26,58,42,0.7);
+  footer {
+    padding: 40px;
+    border-top: 1px solid rgba(245,240,232,0.08);
+  footer p { font-size: 13px; color: var(--text-light); line-height: 1.8; font-weight: 300; }
+  footer a { color: var(--coral); text-decoration: none; }
+  .footer-brand {
+    font-size: 1.4rem;
+    display: block;
+    from { opacity: 0; transform: translateY(20px); }
+  @media (max-width: 680px) {
+    .service-item { grid-template-columns: 1fr; }
+    .service-price-box { position: static; }</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="call-your-therapist.html" class="nav-brand">Call Your Therapist</a>
+  <div class="nav-right">
+    <a href="case-matchmaking.html">Case Match-Making</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-book">Book Now</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="eyebrow">What I Offer</div>
+  <h1 style="color: var(--coral);">Explore Services</h1>
+  <div class="hero-divider"></div>
+  <p class="intro-text">At Call Your Therapist, support is never one-size-fits-all. Whether you're an individual, a parent, a clinician, or an organization — there's something here for you.</p>
+  <p class="intro-text"><em>Reduced rates available upon request.</em></p>
+</section>
+
+<!-- NOT THERAPY BANNER -->
+<div class="not-therapy-banner">
+  <p>"Not therapy, just a really good place to start."</p>
+  <span>All services are consulting-based and do not constitute a therapeutic relationship.</span>
+</div>
+
+<!-- SERVICES -->
+<div class="services-page">
+
+  <!-- Service 1 -->
+  <div class="service-item">
+    <div>
+      <div class="service-number">01</div>
+      <div class="service-tag">General Public · Parents</div>
+      <h2>Case Match-Making</h2>
+      <p>Navigating the healthcare system can feel overwhelming — especially when you're already struggling. Case management takes the hassle out of finding care, so you can focus on getting the support you need.</p>
+      <p>Whether you're looking for a therapist, psychiatrist, or another healthcare provider, I'll help you find the right fit for your needs, insurance, budget, and location.</p>
+      <div class="service-includes">
+        <span>Provider search and referral support</span>
+        <span>Insurance and access navigation</span>
+        <span>Follow-up to ensure you find the right fit</span>
+        <span>Available for individuals, parents, and loved ones</span>
+      </div>
+    </div>
+    <div class="service-price-box">
+      <div class="price">$50</div>
+      <div class="per">per session</div>
+      <a href="contact.html" class="btn-book-service">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Service 2 -->
+  <div class="service-item">
+    <div>
+      <div class="service-number">02</div>
+      <div class="service-tag">Individuals · Parents</div>
+      <h2>Client Consultation</h2>
+      <p>For anyone looking to talk through a mental health concern with a licensed professional. No waitlist, no pressure — just clear, compassionate guidance from someone who gets it.</p>
+      <p>Whether you're trying to make sense of what you're feeling, looking for direction for long-term support, or just need someone to think it through with, this is for you.</p>
+      <div class="service-includes">
+        <span>One-time or ongoing short-term consultation sessions</span>
+        <span>Psychoeducation and mental health guidance</span>
+        <span>Referral support if ongoing therapy is needed</span>
+        <span>Available to individuals</span>
+      </div>
+    </div>
+    <div class="service-price-box">
+      <div class="price">$100</div>
+      <div class="per">per session</div>
+      <a href="contact.html" class="btn-book-service">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Service 3 -->
+  <div class="service-item">
+    <div>
+      <div class="service-number">03</div>
+      <div class="service-tag">Therapists · Clinicians</div>
+      <h2>Professional Consultation</h2>
+      <p>Even the most experienced clinicians need a trusted colleague sometimes. This is a confidential, peer-level space to think through complex cases, ethical dilemmas, or specialty areas — without judgment.</p>
+      <p>Grounded in real clinical experience with complex trauma (C-PTSD), eating disorders, family estrangement, chronic illness, and alienated populations.</p>
+      <div class="service-includes">
+        <span>Case consultation for complex or high-risk clients</span>
+        <span>Ethical gray area support</span>
+        <span>Specialty population guidance</span>
+        <span>Confidential and peer-level</span>
+      </div>
+    </div>
+    <div class="service-price-box">
+      <div class="price">$100</div>
+      <div class="per">per session</div>
+      <a href="contact.html" class="btn-book-service">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Service 4 -->
+  <div class="service-item">
+    <div>
+      <div class="service-number">04</div>
+      <div class="service-tag">Organizations · HR</div>
+      <h2>Trainings & Psychoeducation</h2>
+      <p>Your people are your greatest asset — and their mental health matters. I work with organizations to provide expert-led training and workshops that go beyond surface-level wellness initiatives.</p>
+      <p>From lunch-and-learns to manager training to employee resource group content, everything is grounded in real clinical expertise and designed to actually make a difference.</p>
+      <div class="service-includes">
+        <span>Lunch-and-learns and employee workshops</span>
+        <span>Manager mental health training</span>
+        <span>Guided meditations and breathwork practices</span>
+        <span>Custom consulting packages available</span>
+      </div>
+    </div>
+    <div class="service-price-box">
+      <div class="price">Let's<br>Talk</div>
+      <div class="per">contact for pricing</div>
+      <a href="contact.html" class="btn-contact-service">Get in Touch</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="background: var(--green-dark); padding: 60px 40px; text-align: center; border-top: 1px solid rgba(245,240,232,0.08);">
+  <svg viewBox="0 0 400 20" width="400" height="20" fill="none">
+    <path d="M0 10 Q25 2 50 10 Q75 18 100 10 Q125 2 150 10 Q175 18 200 10 Q225 2 250 10 Q275 18 300 10 Q325 2 350 10 Q375 18 400 10" stroke="#e8d48a" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMTMwIiB3aWR0aD0iNDYwIiBoZWlnaHQ9IjEzMCI+CgogIDwhLS0gUkVUUk8gUEhPTkUgSUNPTiAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNCwgMTIpIj4KICAgIDwhLS0gUGhvbmUgc2hhZG93IC0tPgogICAgPHBhdGggZD0iTTE4IDcyIEMxMCA2MiA4IDQ1IDE0IDI4IEMxOCAxNiAyOCA4IDM4IDEwIEw0OCAyMiBDNTAgMjYgNDggMzIgNDQgMzQgTDM4IDM3IEMzNiAzOCAzNSA0MCAzNiA0MiBMNDYgNjIgQzQ3IDY0IDQ5IDY1IDUxIDY0IEw1NyA2MSBDNjEgNTkgNjcgNjAgNjkgNjQgTDc2IDc2IEM3OCA4MCA3NCA5MCA2MiA5NCBDNDUgMTAwIDI4IDg2IDE4IDcyIFoiCiAgICAgIGZpbGw9IiMxYTNhMmEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMsMykiLz4KICAgIDwhLS0gSGFuZHNldCBib2R5IC0tPgogICAgPHBhdGggZD0iTTE4IDcyIEMxMCA2MiA4IDQ1IDE0IDI4IEMxOCAxNiAyOCA4IDM4IDEwIEw0OCAyMiBDNTAgMjYgNDggMzIgNDQgMzQgTDM4IDM3IEMzNiAzOCAzNSA0MCAzNiA0MiBMNDYgNjIgQzQ3IDY0IDQ5IDY1IDUxIDY0IEw1NyA2MSBDNjEgNTkgNjcgNjAgNjkgNjQgTDc2IDc2IEM3OCA4MCA3NCA5MCA2MiA5NCBDNDUgMTAwIDI4IDg2IDE4IDcyIFoiCiAgICAgIGZpbGw9IiMyZDVhM2QiIHN0cm9rZT0iI2U4ZDQ4YSIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPCEtLSBDb3JkIC0tPgogICAgPHBhdGggZD0iTTUxIDY0IFE1OCA3MCA1NSA3OCBRNTIgODYgNjAgODgiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhCNkY3QSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCiAgICA8IS0tIFNwYXJrbGVzIC0tPgogICAgPHRleHQgeD0iODIiIHk9IjE2IiBmb250LXNpemU9IjEyIiBmaWxsPSIjZThkNDhhIj4mIzEwMDIyOzwvdGV4dD4KICAgIDx0ZXh0IHg9IjMiIHk9IjI0IiBmb250LXNpemU9IjEwIiBmaWxsPSIjOEI2RjdBIj4mIzEwMDIyOzwvdGV4dD4KICAgIDx0ZXh0IHg9Ijc4IiB5PSI4NSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzhCNkY3QSI+JiMxMDAyMjs8L3RleHQ+CiAgICA8dGV4dCB4PSI4OCIgeT0iNTIiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iI2U4ZDQ4YSI+JiMxMDAyMjs8L3RleHQ+CiAgICA8dGV4dCB4PSI1NSIgeT0iNiIgZm9udC1zaXplPSI4IiBmaWxsPSIjZThkNDhhIj4mIzEwMDIyOzwvdGV4dD4KICA8L2c+CgogIDwhLS0gVmVydGljYWwgZGl2aWRlciAtLT4KICA8bGluZSB4MT0iMTE4IiB5MT0iMzgiIHgyPSIxMTgiIHkyPSIxMTUiIHN0cm9rZT0icmdiYSgyMzIsMjEyLDEzOCwwLjIpIiBzdHJva2Utd2lkdGg9IjEiLz4KCiAgPCEtLSBCUkFORCBOQU1FIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzMiwgMCkiPgoKICAgIDwhLS0gIkNhbGwgWW91ciIgaW4gYnV0dGVyIHllbGxvdyAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjUyIgogICAgICBmb250LWZhbWlseT0iJ1BsYXlmYWlyIERpc3BsYXknLCBHZW9yZ2lhLCBzZXJpZiIKICAgICAgZm9udC1zdHlsZT0iaXRhbGljIgogICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICBmb250LXNpemU9IjM4IgogICAgICBmaWxsPSIjZThkNDhhIgogICAgICBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q2FsbCBZb3VyPC90ZXh0PgoKICAgIDwhLS0gIlRoZXJhcGlzdCIgaW4gYnV0dGVyIHllbGxvdyAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjkyIgogICAgICBmb250LWZhbWlseT0iJ1BsYXlmYWlyIERpc3BsYXknLCBHZW9yZ2lhLCBzZXJpZiIKICAgICAgZm9udC1zdHlsZT0iaXRhbGljIgogICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICBmb250LXNpemU9IjM4IgogICAgICBmaWxsPSIjZThkNDhhIgogICAgICBsZXR0ZXItc3BhY2luZz0iLTAuNSI+VGhlcmFwaXN0PC90ZXh0PgoKICAgIDwhLS0gR3JlZW4gc3F1aWdnbGUgdW5kZXJsaW5lIC0tPgogICAgPHBhdGggZD0iTTAgMTEzIFExOCAxMDYgMzYgMTEzIFE1NCAxMjAgNzIgMTEzIFE5MCAxMDYgMTA4IDExMyBRMTI2IDEyMCAxNDQgMTEzIFExNjIgMTA2IDE4MCAxMTMgUTE5OCAxMjAgMjE2IDExMyBRMjM0IDEwNiAyNTIgMTEzIFEyNzAgMTIwIDI4OCAxMTMiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJkNWEzZCIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCiAgPC9nPgoKPC9zdmc+Cg==" alt="Call Your Therapist" style="width: 220px; margin-bottom: 12px; display: block;"/>
+      <span class="footer-tagline">"When You Need A Place To Start."</span>
+    </div>
+    <div class="footer-links-col">
+      <h4>Pages</h4>
+      <a href="call-your-therapist.html">Home</a>
+      <a href="case-matchmaking.html">Case Match-Making</a>
+    <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact-col">
+      <h4>Contact</h4>
+      <a href="/cdn-cgi/l/email-protection#04676568687176706c617665746d7770446369656d682a676b69" style="color:inherit"><span class="__cf_email__" data-cfemail="accfcdc0c0d9ded8c4c9decddcc5dfd8eccbc1cdc5c082cfc3c1">[email&#160;protected]</span></a>
+      <p>DC Metro Area · US</p>
+      <div class="footer-socials">
+        <a href="#">f</a>
