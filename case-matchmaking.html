@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Match-Making — Call Your Therapist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Call Your Therapist - Global Stylesheet */
+
+
+  :root {
+    --green-dark: #1a3a2a;
+    --green-mid: #2d5a3d;
+    --green-light: #4a7c5a;
+    --coral: #8B6F7A;
+    --coral-light: #9d8088;
+    --lime: #e8d48a;
+    --cream: #f5f0e8;
+    --white: #fdfcf9;
+    --text-light: rgba(245,240,232,0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--green-dark);
+    color: var(--cream);
+    overflow-x: hidden;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--coral);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 64px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fdfcf9;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-right a { color: #e8d48a; text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; transition: opacity 0.2s; }
+  .nav-right a:hover { opacity: 0.7; }
+  .nav-right a.active { border-bottom: 2px solid #e8d48a; padding-bottom: 2px; }
+  .btn-book { background: var(--green-dark) !important; color: var(--cream) !important; padding: 8px 18px !important; border-radius: 100px; font-size: 11px !important; font-weight: 700 !important; border-bottom: none !important; text-transform: uppercase; letter-spacing: 0.08em; }
+  .btn-book:hover { opacity: 0.8 !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-phone-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCI+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQsIDEyKSI+CiAgICA8cGF0aCBkPSJNMTggNzIgQzEwIDYyIDggNDUgMTQgMjggQzE4IDE2IDI4IDggMzggMTAgTDQ4IDIyIEM1MCAyNiA0OCAzMiA0NCAzNCBMMzggMzcgQzM2IDM4IDM1IDQwIDM2IDQyIEw0NiA2MiBDNDcgNjQgNDkgNjUgNTEgNjQgTDU3IDYxIEM2MSA1OSA2NyA2MCA2OSA2NCBMNzYgNzYgQzc4IDgwIDc0IDkwIDYyIDk0IEM0NSAxMDAgMjggODYgMTggNzIgWiIKICAgICAgZmlsbD0iIzJkNWEzZCIgc3Ryb2tlPSIjZThkNDhhIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNNTEgNjQgUTU4IDcwIDU1IDc4IFE1MiA4NiA2MCA4OCIKICAgICAgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNWMxZjM1IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwvZz4KPC9zdmc+');
+    background-size: 55%;
+    background-position: -15% 98%;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(74,124,90,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Retro grain texture */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .hero-retro-line {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s ease both;
+    border: 1px solid var(--lime);
+    padding: 6px 18px;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    animation: fadeUp 0.9s ease both;
+    text-shadow: 3px 3px 0px rgba(158,42,43,0.3);
+      text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 2px 8px rgba(255,255,255,0.15);
+  }
+
+  .hero h1 span { color: var(--lime); }
+
+  .hero-divider {
+    width: 80px;
+    height: 2px;
+    background: var(--lime);
+    margin: 20px auto;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero-slogan {
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+    font-weight: 300;
+    color: var(--text-light);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 52px;
+    animation: fadeUp 0.9s 0.15s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.15s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 0px #2a0f1a, 0 8px 16px rgba(158,42,43,0.35);
+    position: relative;
+    top: 0;
+  }
+
+  .btn-primary:hover {
+    background: var(--coral-light);
+    box-shadow: 0 4px 0px #2a0f1a, 0 6px 12px rgba(158,42,43,0.3);
+    top: 2px;
+  }
+
+  .btn-primary:active {
+    box-shadow: 0 1px 0px #2a0f1a, 0 2px 6px rgba(158,42,43,0.2);
+    top: 5px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border: 2px solid rgba(245,240,232,0.4);
+    transition: all 0.15s ease;
+    cursor: pointer;
+    box-shadow: 0 6px 0px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.2);
+    position: relative;
+    top: 0;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--cream);
+    box-shadow: 0 4px 0px rgba(0,0,0,0.3), 0 6px 12px rgba(0,0,0,0.15);
+    top: 2px;
+  }
+
+  .btn-outline:active {
+    box-shadow: 0 1px 0px rgba(0,0,0,0.3);
+    top: 5px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .scroll-arrow {
+    width: 22px;
+    height: 22px;
+    border-right: 2px solid rgba(245,240,232,0.35);
+    border-bottom: 2px solid rgba(245,240,232,0.35);
+    transform: rotate(45deg);
+    animation: bounceDown 2s ease-in-out infinite;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.35; }
+    50% { transform: rotate(45deg) translateY(5px); opacity: 0.7; }
+  }
+
+  /* ── INTRO SECTION ── */
+  .intro {
+    background: var(--cream);
+    color: var(--green-dark);
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  .intro-inner { max-width: 780px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+  }
+
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .intro p {
+    font-family: 'Lato', sans-serif; font-weight: 300;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #3a4a40;
+    margin-bottom: 18px;
+  }
+
+  .cursive {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25em;
+    color: var(--coral);
+  }
+
+  .intro p strong { color: var(--green-dark); font-weight: 700; }
+
+  .intro-closing {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--coral);
+    margin-top: 32px;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--lime);
+    padding: 100px 40px;
+    color: var(--green-dark);
+  }
+
+  .services-header { text-align: center; margin-bottom: 60px; }
+
+  .services-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+
+  .services-header p { font-size: 16px; color: rgba(26,58,42,0.7); max-width: 500px; margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--green-dark);
+    border-radius: 20px;
+    padding: 36px 30px;
+    color: var(--cream);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--coral), var(--lime));
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(212,232,74,0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    background: var(--green-mid);
+  }
+
+  .service-card:hover::after { opacity: 1; }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--cream);
+    transition: color 0.3s ease;
+  }
+
+  .service-card:hover h3 { color: var(--lime); }
+
+  .service-card .price {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-light);
+  }
+
+  .service-card .audience-tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(212,232,74,0.15);
+    color: var(--lime);
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--green-mid);
+    padding: 100px 40px;
+    color: var(--cream);
+  }
+
+  .about-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .about h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 36px;
+    line-height: 1.2;
+  }
+
+  .about h2 span { color: var(--lime); }
+
+  .about p {
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-light);
+    margin-bottom: 22px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  .about-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 36px;
+    justify-content: center;
+  }
+
+  .cred-pill {
+    background: rgba(245,240,232,0.1);
+    border: 1px solid rgba(245,240,232,0.2);
+    color: var(--cream);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .about .section-tag {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── AUDIENCES ── */
+  .audiences {
+    background: var(--green-dark);
+    padding: 100px 40px;
+  }
+
+  .audiences-header { text-align: center; margin-bottom: 60px; }
+
+  .audiences-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .audiences-header p { font-size: 16px; color: var(--text-light); max-width: 500px; margin: 0 auto; }
+
+  .audiences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .audience-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 18px;
+    padding: 32px 26px;
+    transition: all 0.25s ease;
+    cursor: default;
+    text-align: center;
+  }
+
+  .audience-card:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: var(--coral);
+    transform: translateY(-3px);
+  }
+
+  .audience-emoji { font-size: 32px; margin-bottom: 14px; }
+
+  .audience-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .audience-card p { font-size: 14px; line-height: 1.65; color: var(--text-light); }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--coral);
+    padding: 100px 40px;
+    text-align: center;
+    color: white;
+  }
+
+  .contact-inner { max-width: 680px; margin: 0 auto; }
+
+  .contact h2 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .contact p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 14px;
+  }
+
+  .contact-form {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-family: 'Lato', sans-serif; font-weight: 300;
+    font-size: 15px;
+    outline: none;
+    transition: background 0.2s;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.65); }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus { background: rgba(255,255,255,0.28); }
+
+  .contact-form textarea { min-height: 130px; resize: vertical; }
+
+  .btn-submit {
+    background: var(--green-dark);
+    color: var(--cream);
+    border: none;
+    padding: 18px 40px;
+    border-radius: 100px;
+    font-family: 'Lato', sans-serif; font-weight: 300;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+    align-self: center;
+    width: 100%;
+  }
+
+  .btn-submit:hover { background: var(--green-mid); transform: translateY(-2px); }
+
+  .therapy-link {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .therapy-link p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 14px;
+  }
+
+  .therapy-link a {
+    color: white;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+ ── */
+  
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes scrollLine {
+    0% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 60px 24px 100px; }
+    .intro, .services, .about, .audiences, .contact { padding: 70px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+
+  /* FOOTER */
+  footer { background: #8B6F7A; border-top: 1px solid rgba(245,240,232,0.08); padding: 60px 40px 0; }
+  .footer-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(245,240,232,0.08); }
+  .footer-tagline { font-family: 'Dancing Script', cursive; font-size: 1.1rem; color: #e8d48a; margin-bottom: 14px; display: block; }
+  .footer-links-col h4, .footer-contact-col h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e8d48a; margin-bottom: 16px; display: block; }
+  .footer-links-col a, .footer-contact-col a { display: block; font-size: 14px; color: rgba(245,240,232,0.85); text-decoration: none; margin-bottom: 10px; font-weight: 300; }
+  .footer-links-col a:hover, .footer-contact-col a:hover { color: #f5f0e8; }
+  .footer-contact-col p { font-size: 14px; color: rgba(245,240,232,0.85); font-weight: 300; margin-bottom: 16px; }
+  .footer-socials { display: flex; gap: 14px; margin-top: 4px; }
+  .footer-socials a { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(245,240,232,0.2); font-size: 13px; font-weight: 700; color: rgba(245,240,232,0.85) !important; text-decoration: none; margin-bottom: 0 !important; }
+  .footer-bottom { max-width: 1000px; margin: 0 auto; padding: 20px 0; text-align: center; }
+  .footer-bottom p { font-size: 11px; color: rgba(245,240,232,0.4); font-weight: 300; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --butter: #e8d48a;
+  body { font-family: 'Lato', sans-serif; font-weight: 300; color: var(--green-dark); background: var(--cream); }
+  .nav-brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; font-weight: 700; color: #fdfcf9; text-decoration: none; white-space: nowrap; }
+  /* PAGE HERO */
+  .page-hero {
+    padding: 80px 40px 60px;
+  .page-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--butter);
+    letter-spacing: 0.18em;
+    border: 2px solid var(--butter);
+    padding: 18px 48px;
+    border-radius: 4px;
+    text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 2px 8px rgba(255,255,255,0.15);
+  .page-hero .subtext {
+    color: var(--butter);
+    opacity: 0.7;
+    margin-top: 20px;
+  /* CONTENT */
+  .content-wrap { max-width: 860px; margin: 0 auto; padding: 80px 40px; }
+  .intro-block {
+    border-radius: 16px;
+    padding: 48px;
+    margin-bottom: 48px;
+  .intro-block h2 {
+    font-size: 2rem;
+    color: var(--butter);
+  .intro-block p {
+  .section-label {
+    display: block;
+    text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 2px 8px rgba(255,255,255,0.15);
+  .what-block {
+    margin-bottom: 48px;
+  .what-block h2 {
+    font-size: 1.8rem;
+  .what-block p {
+    color: #2a2a2a;
+  .not-therapy-note {
+    background: var(--butter);
+    padding: 28px 36px;
+    margin: 48px 0;
+  .not-therapy-note p {
+    letter-spacing: 0.1em;
+  .points-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 48px 0;
+  .point-card {
+    background: white;
+    border: 1px solid rgba(26,58,42,0.08);
+    padding: 28px;
+  .point-card h3 {
+    font-size: 1.1rem;
+  .point-card p {
+    line-height: 1.7;
+    color: #2a2a2a;
+  .point-card .dot {
+    margin-right: 6px;
+  /* CTA */
+  .cta-block {
+    border-radius: 16px;
+    padding: 48px;
+  .cta-block h2 {
+    font-size: 1.8rem;
+  .cta-block p {
+    line-height: 1.7;
+  .btn-cta { display: inline-block; background: var(--coral); color: var(--cream); padding: 14px 32px; border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; margin: 6px; transition: opacity 0.2s; }
+  .btn-cta:hover { opacity: 0.85; }
+  .btn-cta-outline { display: inline-block; background: transparent; border: 2px solid rgba(245,240,232,0.3); color: var(--cream); padding: 14px 32px; border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; margin: 6px; transition: all 0.2s; }
+  .btn-cta-outline:hover { border-color: var(--butter); color: var(--butter); }
+  /* HOW IT WORKS */
+  .how-it-works { margin: 48px 0; }
+  .how-it-works h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; color: var(--green-dark); font-weight: 700; margin-bottom: 16px; }
+  .how-it-works > p { font-size: 16px; line-height: 1.85; color: #2a2a2a; font-weight: 300; margin-bottom: 40px; }
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: start; padding: 36px 0; border-bottom: 1px solid rgba(26,58,42,0.1); }
+  .step:last-child { border-bottom: none; }
+  .step-number { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; color: rgba(26,58,42,0.12); font-weight: 700; line-height: 1; padding-top: 4px; }
+  .step-content h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--coral); font-weight: 700; margin-bottom: 10px; text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 2px 8px rgba(255,255,255,0.15); }
+  .step-content p { font-size: 15px; line-height: 1.8; color: #2a2a2a; font-weight: 300; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="call-your-therapist.html" class="nav-brand">Call Your Therapist</a>
+  <div class="nav-right">
+    <a href="case-matchmaking.html" class="active">Case Match-Making</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-book">Book Now</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <h1>Case Match-Making</h1>
+</section>
+
+<div class="content-wrap">
+
+  <div class="intro-block">
+    <h2>Not sure where to start? That's the whole point.</h2>
+    <p>The mental healthcare system is overwhelming — even for people who work in it. Case Match-Making is a service designed to cut through the noise and connect you with the right support, the right provider, and the right path forward. Think of it as having a knowledgeable professional in your corner who actually knows how the system works.</p>
+  </div>
+
+  <div class="what-block">
+    <span class="section-label">✦ What Is It?</span>
+    <h2>More than a referral. A real match.</h2>
+    <p>Case Match-Making is a personalized service where I take the time to understand your situation — your history, your needs, your preferences, your insurance — and find providers, programs, or resources that are actually a good fit for you.</p>
+    <p>This isn't a Google search or a generic list of names. It's a thoughtful, human process guided by someone with clinical training and real-world experience navigating the system. Whether you're looking for a therapist, a psychiatrist, an intensive outpatient program, or just don't know what kind of support you need yet — I can help you figure it out.</p>
+  </div>
+
+  <div class="not-therapy-note">
+    <p>✦ it's a bridge to get you there ✦</p>
+  </div>
+
+  <div class="points-grid">
+    <div class="point-card">
+      <h3>For Individuals</h3>
+      <p><span class="dot">✦</span>You've been putting off finding a therapist because you don't know where to start. Let me start for you.</p>
+    </div>
+    <div class="point-card">
+      <h3>For Parents</h3>
+      <p><span class="dot">✦</span>Your child needs support and the system feels impossible. I'll help you navigate it with clarity and care.</p>
+    </div>
+    <div class="point-card">
+      <h3>For Loved Ones</h3>
+      <p><span class="dot">✦</span>Someone you care about needs help and you don't know how to help them get it. I do.</p>
+    </div>
+    <div class="point-card">
+      <h3>For Anyone</h3>
+      <p><span class="dot">✦</span>You know you need something but you're not sure what. That's a perfectly valid place to start.</p>
+    </div>
+  </div>
+
+
+  <!-- HOW IT WORKS -->
+  <div class="how-it-works">
+    <span class="section-label">✦ How It Works</span>
+    <h2>Your story matters. So does your match.</h2>
+    <p>Case Match-Making isn't a quick form or a generic referral list. It's a real conversation — one where I take the time to actually understand who you are and what you need before making any recommendations.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>We Meet</h3>
+          <p>We start with a session where you share your story. Your background, your history, what you've tried before, what hasn't worked — and most importantly, what you're hoping to find. There's no rush and no judgment.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>We Get Clear on Your Goals</h3>
+          <p>Together, we clarify what you're actually looking for. Whether that's a therapist who specializes in trauma, a psychiatrist who takes your insurance, a support group, a referral for a good primary doctor, or something else entirely — we get specific about what a good match looks like for you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>I Find Your Match</h3>
+          <p>Using my clinical background and knowledge of the healthcare landscape, I research and identify providers, programs, or resources that genuinely fit your needs. Not just anyone — the right ones. Whether it's therapy, psychiatry, primary care, or another healthcare concern, I help bridge the gap between you and the support you deserve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>Ready to find your match?</h2>
+    <p>Sessions are $50 and available as a one-time or short-term engagement. Reach out to get started — no wrong reason to reach out.</p>
+    <a href="contact.html" class="btn-cta">Book a Session</a>
+    <a href="services.html" class="btn-cta-outline">View All Services</a>
+  </div>
+
+</div>
+
+<div style="background: var(--green-dark); padding: 60px 40px; text-align: center; border-top: 1px solid rgba(245,240,232,0.08);">
+  <svg viewBox="0 0 400 20" width="400" height="20" fill="none">
+    <path d="M0 10 Q25 2 50 10 Q75 18 100 10 Q125 2 150 10 Q175 18 200 10 Q225 2 250 10 Q275 18 300 10 Q325 2 350 10 Q375 18 400 10" stroke="#e8d48a" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMTMwIiB3aWR0aD0iNDYwIiBoZWlnaHQ9IjEzMCI+CgogIDwhLS0gUkVUUk8gUEhPTkUgSUNPTiAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNCwgMTIpIj4KICAgIDwhLS0gUGhvbmUgc2hhZG93IC0tPgogICAgPHBhdGggZD0iTTE4IDcyIEMxMCA2MiA4IDQ1IDE0IDI4IEMxOCAxNiAyOCA4IDM4IDEwIEw0OCAyMiBDNTAgMjYgNDggMzIgNDQgMzQgTDM4IDM3IEMzNiAzOCAzNSA0MCAzNiA0MiBMNDYgNjIgQzQ3IDY0IDQ5IDY1IDUxIDY0IEw1NyA2MSBDNjEgNTkgNjcgNjAgNjkgNjQgTDc2IDc2IEM3OCA4MCA3NCA5MCA2MiA5NCBDNDUgMTAwIDI4IDg2IDE4IDcyIFoiCiAgICAgIGZpbGw9IiMxYTNhMmEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMsMykiLz4KICAgIDwhLS0gSGFuZHNldCBib2R5IC0tPgogICAgPHBhdGggZD0iTTE4IDcyIEMxMCA2MiA4IDQ1IDE0IDI4IEMxOCAxNiAyOCA4IDM4IDEwIEw0OCAyMiBDNTAgMjYgNDggMzIgNDQgMzQgTDM4IDM3IEMzNiAzOCAzNSA0MCAzNiA0MiBMNDYgNjIgQzQ3IDY0IDQ5IDY1IDUxIDY0IEw1NyA2MSBDNjEgNTkgNjcgNjAgNjkgNjQgTDc2IDc2IEM3OCA4MCA3NCA5MCA2MiA5NCBDNDUgMTAwIDI4IDg2IDE4IDcyIFoiCiAgICAgIGZpbGw9IiMyZDVhM2QiIHN0cm9rZT0iI2U4ZDQ4YSIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPCEtLSBDb3JkIC0tPgogICAgPHBhdGggZD0iTTUxIDY0IFE1OCA3MCA1NSA3OCBRNTIgODYgNjAgODgiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhCNkY3QSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCiAgICA8IS0tIFNwYXJrbGVzIC0tPgogICAgPHRleHQgeD0iODIiIHk9IjE2IiBmb250LXNpemU9IjEyIiBmaWxsPSIjZThkNDhhIj4mIzEwMDIyOzwvdGV4dD4KICAgIDx0ZXh0IHg9IjMiIHk9IjI0IiBmb250LXNpemU9IjEwIiBmaWxsPSIjOEI2RjdBIj4mIzEwMDIyOzwvdGV4dD4KICAgIDx0ZXh0IHg9Ijc4IiB5PSI4NSIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzhCNkY3QSI+JiMxMDAyMjs8L3RleHQ+CiAgICA8dGV4dCB4PSI4OCIgeT0iNTIiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iI2U4ZDQ4YSI+JiMxMDAyMjs8L3RleHQ+CiAgICA8dGV4dCB4PSI1NSIgeT0iNiIgZm9udC1zaXplPSI4IiBmaWxsPSIjZThkNDhhIj4mIzEwMDIyOzwvdGV4dD4KICA8L2c+CgogIDwhLS0gVmVydGljYWwgZGl2aWRlciAtLT4KICA8bGluZSB4MT0iMTE4IiB5MT0iMzgiIHgyPSIxMTgiIHkyPSIxMTUiIHN0cm9rZT0icmdiYSgyMzIsMjEyLDEzOCwwLjIpIiBzdHJva2Utd2lkdGg9IjEiLz4KCiAgPCEtLSBCUkFORCBOQU1FIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzMiwgMCkiPgoKICAgIDwhLS0gIkNhbGwgWW91ciIgaW4gYnV0dGVyIHllbGxvdyAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjUyIgogICAgICBmb250LWZhbWlseT0iJ1BsYXlmYWlyIERpc3BsYXknLCBHZW9yZ2lhLCBzZXJpZiIKICAgICAgZm9udC1zdHlsZT0iaXRhbGljIgogICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICBmb250LXNpemU9IjM4IgogICAgICBmaWxsPSIjZThkNDhhIgogICAgICBsZXR0ZXItc3BhY2luZz0iLTAuNSI+Q2FsbCBZb3VyPC90ZXh0PgoKICAgIDwhLS0gIlRoZXJhcGlzdCIgaW4gYnV0dGVyIHllbGxvdyAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjkyIgogICAgICBmb250LWZhbWlseT0iJ1BsYXlmYWlyIERpc3BsYXknLCBHZW9yZ2lhLCBzZXJpZiIKICAgICAgZm9udC1zdHlsZT0iaXRhbGljIgogICAgICBmb250LXdlaWdodD0iNzAwIgogICAgICBmb250LXNpemU9IjM4IgogICAgICBmaWxsPSIjZThkNDhhIgogICAgICBsZXR0ZXItc3BhY2luZz0iLTAuNSI+VGhlcmFwaXN0PC90ZXh0PgoKICAgIDwhLS0gR3JlZW4gc3F1aWdnbGUgdW5kZXJsaW5lIC0tPgogICAgPHBhdGggZD0iTTAgMTEzIFExOCAxMDYgMzYgMTEzIFE1NCAxMjAgNzIgMTEzIFE5MCAxMDYgMTA4IDExMyBRMTI2IDEyMCAxNDQgMTEzIFExNjIgMTA2IDE4MCAxMTMgUTE5OCAxMjAgMjE2IDExMyBRMjM0IDEwNiAyNTIgMTEzIFEyNzAgMTIwIDI4OCAxMTMiCiAgICAgIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJkNWEzZCIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KCiAgPC9nPgoKPC9zdmc+Cg==" alt="Call Your Therapist" style="width: 220px; margin-bottom: 12px; display: block;"/>
+      <span class="footer-tagline">"When You Need A Place To Start."</span>
+    </div>
+    <div class="footer-links-col">
+      <h4>Pages</h4>
+      <a href="call-your-therapist.html">Home</a>
+      <a href="case-matchmaking.html">Case Match-Making</a>
+    <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact-col">
+      <h4>Contact</h4>
+      <a href="/cdn-cgi/l/email-protection#2340424f4f5651574b465142534a505763444e424a4f0d404c4e" style="color:inherit"><span class="__cf_email__" data-cfemail="ee8d8f82829b9c9a868b9c8f9e879d9aae89838f8782c08d8183">[email&#160;protected]</span></a>
+      <p>DC Metro Area · US</p>
+      <div class="footer-socials">
+        <a href="#">f</a>
