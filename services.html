@@ -6,6 +6,7 @@
 <title>Services — Call Your Therapist</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
+
 <style>
   :root {
     --green-dark: #1a3a2a;
@@ -650,6 +651,38 @@
   .footer-socials a { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(245,240,232,0.2); font-size: 13px; font-weight: 700; color: rgba(245,240,232,0.85) !important; text-decoration: none; margin-bottom: 0 !important; }
   .footer-bottom { max-width: 1000px; margin: 0 auto; padding: 20px 0; text-align: center; }
   .footer-bottom p { font-size: 11px; color: rgba(245,240,232,0.4); font-weight: 300; }
+
+  .services-page { background: var(--cream); }
+  .page-hero { background: var(--green-dark); padding: 80px 40px 60px; text-align: center; }
+  .page-hero .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); margin-bottom: 16px; display: block; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; color: var(--cream); margin-bottom: 0; }
+  .hero-divider { width: 60px; height: 2px; background: var(--lime); margin: 24px auto 0; opacity: 0.5; }
+  .intro-text { max-width: 680px; margin: 0 auto; padding: 60px 40px; text-align: center; }
+  .intro-text p { font-size: 1.1rem; color: var(--green-dark); line-height: 1.8; }
+  .intro-text em { font-style: italic; color: var(--green-mid); display: block; margin-top: 12px; font-size: 0.95rem; }
+  .service-item { display: grid; grid-template-columns: 1fr 240px; gap: 0; max-width: 900px; margin: 0 auto 40px; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(26,58,42,0.08); }
+  .service-number { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--lime); font-weight: 700; opacity: 0.3; line-height: 1; margin-bottom: 8px; }
+  .service-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); background: rgba(139,111,122,0.1); padding: 4px 12px; border-radius: 100px; margin-bottom: 12px; }
+  .service-item .content { padding: 40px; }
+  .service-item h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--green-dark); margin-bottom: 16px; }
+  .service-item p { color: #4a5a50; line-height: 1.7; font-size: 0.95rem; margin-bottom: 16px; }
+  .service-includes { list-style: none; margin: 16px 0; }
+  .service-includes li { font-size: 0.9rem; color: #4a5a50; padding: 4px 0; padding-left: 20px; position: relative; }
+  .service-includes li::before { content: '✦'; position: absolute; left: 0; color: var(--lime); font-size: 8px; top: 7px; }
+  .service-price-box { background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; text-align: center; }
+  .price { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--lime); font-weight: 700; line-height: 1; }
+  .per { font-size: 12px; color: rgba(245,240,232,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px; display: block; }
+  .btn-book-service { display: inline-block; margin-top: 24px; background: var(--lime); color: var(--green-dark); padding: 12px 24px; border-radius: 100px; font-size: 12px; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; transition: all 0.2s; }
+  .btn-book-service:hover { opacity: 0.85; }
+  .btn-contact-service { display: inline-block; margin-top: 10px; color: rgba(245,240,232,0.6); font-size: 11px; text-decoration: none; }
+  .btn-contact-service:hover { color: var(--cream); }
+  .not-therapy-banner { background: var(--green-mid); padding: 40px; text-align: center; margin: 20px 40px 60px; border-radius: 16px; max-width: 860px; margin-left: auto; margin-right: auto; }
+  .not-therapy-banner p { color: var(--cream); line-height: 1.7; }
+  .not-therapy-banner a { color: var(--lime); }
+  @media (max-width: 680px) {
+    .service-item { grid-template-columns: 1fr; }
+    .service-price-box { padding: 32px; }
+  }
 </style>
 </head>
 <body>

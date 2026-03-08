@@ -6,6 +6,7 @@
 <title>Case Match-Making — Call Your Therapist</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 
+
 <style>
   :root {
     --green-dark: #1a3a2a;
@@ -650,6 +651,35 @@
   .footer-socials a { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(245,240,232,0.2); font-size: 13px; font-weight: 700; color: rgba(245,240,232,0.85) !important; text-decoration: none; margin-bottom: 0 !important; }
   .footer-bottom { max-width: 1000px; margin: 0 auto; padding: 20px 0; text-align: center; }
   .footer-bottom p { font-size: 11px; color: rgba(245,240,232,0.4); font-weight: 300; }
+
+  .case-page { background: var(--cream); }
+  .page-hero { background: var(--green-dark); padding: 80px 40px 60px; text-align: center; }
+  .page-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; color: var(--cream); margin-bottom: 0; }
+  .hero-divider { width: 60px; height: 2px; background: var(--lime); margin: 24px auto 0; opacity: 0.5; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); margin-bottom: 16px; display: block; }
+  .case-intro { background: var(--green-dark); margin: 40px; border-radius: 16px; padding: 48px; max-width: 860px; margin-left: auto; margin-right: auto; }
+  .case-intro h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; color: var(--lime); margin-bottom: 20px; }
+  .case-intro p { color: rgba(245,240,232,0.85); line-height: 1.8; margin-bottom: 16px; }
+  .case-note { text-align: center; padding: 20px; font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--coral); }
+  .audience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 860px; margin: 0 auto; padding: 0 40px 60px; }
+  .audience-card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(26,58,42,0.07); }
+  .audience-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green-dark); margin-bottom: 12px; }
+  .audience-card p { color: #4a5a50; line-height: 1.7; font-size: 0.95rem; }
+  .how-it-works { background: var(--green-dark); padding: 80px 40px; }
+  .how-it-works h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; color: var(--lime); text-align: center; margin-bottom: 48px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
+  .step { text-align: center; }
+  .step-number { font-family: 'Playfair Display', serif; font-size: 3rem; color: rgba(232,212,138,0.2); font-weight: 700; line-height: 1; margin-bottom: 16px; }
+  .step h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--cream); margin-bottom: 12px; }
+  .step p { color: rgba(245,240,232,0.7); font-size: 0.9rem; line-height: 1.7; }
+  .case-cta { text-align: center; padding: 80px 40px; background: var(--cream); }
+  .case-cta h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; color: var(--green-dark); margin-bottom: 16px; }
+  .case-cta p { color: #4a5a50; margin-bottom: 32px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  @media (max-width: 680px) {
+    .audience-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
